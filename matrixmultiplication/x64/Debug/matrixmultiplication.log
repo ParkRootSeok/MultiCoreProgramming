@@ -1,0 +1,20 @@
+﻿  MatMul.c
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(129,11): warning C4477: 'printf' : 서식 문자열 '%lu'에 'unsigned long' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'cl_ulong'입니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(129,11): message : 서식 문자열에서 '%llu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(129,11): message : 서식 문자열에서 '%Iu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(129,11): message : 서식 문자열에서 '%I64u'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(133,11): warning C4477: 'printf' : 서식 문자열 '%lu'에 'unsigned long' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'size_t'입니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(133,11): message : 서식 문자열에서 '%zu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(137,11): warning C4477: 'printf' : 서식 문자열 '%lu'에 'unsigned long' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'cl_ulong'입니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(137,11): message : 서식 문자열에서 '%llu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(137,11): message : 서식 문자열에서 '%Iu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(137,11): message : 서식 문자열에서 '%I64u'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(141,11): warning C4477: 'printf' : 서식 문자열 '%lu'에 'unsigned long' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'cl_ulong'입니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(141,11): message : 서식 문자열에서 '%llu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(141,11): message : 서식 문자열에서 '%Iu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(141,11): message : 서식 문자열에서 '%I64u'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(248,67): warning C4047: '함수': 'const size_t *'의 간접 참조 수준이 'size_t (*)[2]'과(와) 다릅니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(248,55): warning C4024: 'clEnqueueNDRangeKernel': 형식 및 실제 매개 변수 5의 형식이 서로 다릅니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(63,11): warning C4101: 'max_mem_alloc_size' :참조되지 않은 지역 변수입니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(245,9): warning C4101: 'local_size' :참조되지 않은 지역 변수입니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\matrixmultiplication\MatMul.c(155): error C4703: 초기화되지 않았을 수 있는 로컬 포인터 변수 'device'이(가) 사용되었습니다.

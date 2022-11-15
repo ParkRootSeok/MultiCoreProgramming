@@ -1,0 +1,21 @@
+﻿  info.c
+C:\Users\g_e_u\OneDrive\Desktop\Sejong Univ\4-2\Multi Core Programming\실습1\OpenCL 환경설정\info.c(89,20): warning C4477: 'printf' : 서식 문자열 '%lu'에 'unsigned long' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'cl_ulong'입니다.
+C:\Users\g_e_u\OneDrive\Desktop\Sejong Univ\4-2\Multi Core Programming\실습1\OpenCL 환경설정\info.c(89,20): message : 서식 문자열에서 '%llu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\OneDrive\Desktop\Sejong Univ\4-2\Multi Core Programming\실습1\OpenCL 환경설정\info.c(89,20): message : 서식 문자열에서 '%Iu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\OneDrive\Desktop\Sejong Univ\4-2\Multi Core Programming\실습1\OpenCL 환경설정\info.c(89,20): message : 서식 문자열에서 '%I64u'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\OneDrive\Desktop\Sejong Univ\4-2\Multi Core Programming\실습1\OpenCL 환경설정\info.c(93,20): warning C4477: 'printf' : 서식 문자열 '%lu'에 'unsigned long' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'size_t'입니다.
+C:\Users\g_e_u\OneDrive\Desktop\Sejong Univ\4-2\Multi Core Programming\실습1\OpenCL 환경설정\info.c(93,20): message : 서식 문자열에서 '%zu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\OneDrive\Desktop\Sejong Univ\4-2\Multi Core Programming\실습1\OpenCL 환경설정\info.c(97,20): warning C4477: 'printf' : 서식 문자열 '%lu'에 'unsigned long' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'cl_ulong'입니다.
+C:\Users\g_e_u\OneDrive\Desktop\Sejong Univ\4-2\Multi Core Programming\실습1\OpenCL 환경설정\info.c(97,20): message : 서식 문자열에서 '%llu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\OneDrive\Desktop\Sejong Univ\4-2\Multi Core Programming\실습1\OpenCL 환경설정\info.c(97,20): message : 서식 문자열에서 '%Iu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\OneDrive\Desktop\Sejong Univ\4-2\Multi Core Programming\실습1\OpenCL 환경설정\info.c(97,20): message : 서식 문자열에서 '%I64u'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\OneDrive\Desktop\Sejong Univ\4-2\Multi Core Programming\실습1\OpenCL 환경설정\info.c(101,20): warning C4477: 'printf' : 서식 문자열 '%lu'에 'unsigned long' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'cl_ulong'입니다.
+C:\Users\g_e_u\OneDrive\Desktop\Sejong Univ\4-2\Multi Core Programming\실습1\OpenCL 환경설정\info.c(101,20): message : 서식 문자열에서 '%llu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\OneDrive\Desktop\Sejong Univ\4-2\Multi Core Programming\실습1\OpenCL 환경설정\info.c(101,20): message : 서식 문자열에서 '%Iu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\OneDrive\Desktop\Sejong Univ\4-2\Multi Core Programming\실습1\OpenCL 환경설정\info.c(101,20): message : 서식 문자열에서 '%I64u'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\OneDrive\Desktop\Sejong Univ\4-2\Multi Core Programming\실습1\OpenCL 환경설정\info.c(23,14): warning C4101: 'max_mem_alloc_size' :참조되지 않은 지역 변수입니다.
+  코드를 생성하고 있습니다.
+  Previous IPDB not found, fall back to full compilation.
+  All 4 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  코드를 생성했습니다.
+  Multithread.vcxproj -> C:\Users\g_e_u\git\MultiCoreProgramming\Multithread\x64\Release\Multithread.exe

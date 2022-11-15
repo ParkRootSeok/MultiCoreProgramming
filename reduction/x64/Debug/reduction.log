@@ -1,0 +1,20 @@
+﻿  calculateAverage.c
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(129,11): warning C4477: 'printf' : 서식 문자열 '%lu'에 'unsigned long' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'cl_ulong'입니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(129,11): message : 서식 문자열에서 '%llu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(129,11): message : 서식 문자열에서 '%Iu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(129,11): message : 서식 문자열에서 '%I64u'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(133,11): warning C4477: 'printf' : 서식 문자열 '%lu'에 'unsigned long' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'size_t'입니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(133,11): message : 서식 문자열에서 '%zu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(137,11): warning C4477: 'printf' : 서식 문자열 '%lu'에 'unsigned long' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'cl_ulong'입니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(137,11): message : 서식 문자열에서 '%llu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(137,11): message : 서식 문자열에서 '%Iu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(137,11): message : 서식 문자열에서 '%I64u'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(141,11): warning C4477: 'printf' : 서식 문자열 '%lu'에 'unsigned long' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'cl_ulong'입니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(141,11): message : 서식 문자열에서 '%llu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(141,11): message : 서식 문자열에서 '%Iu'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(141,11): message : 서식 문자열에서 '%I64u'을(를) 사용하는 것이 좋습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(239,9): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(239,9): warning C4313: 'printf': 서식 문자열의 '%d'이(가) int *' 형식의 인수 1과(와) 충돌합니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(63,11): warning C4101: 'max_mem_alloc_size' :참조되지 않은 지역 변수입니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(229,9): warning C4101: 'local_size' :참조되지 않은 지역 변수입니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\calculateAverage.c(155): error C4703: 초기화되지 않았을 수 있는 로컬 포인터 변수 'device'이(가) 사용되었습니다.

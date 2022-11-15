@@ -1,0 +1,21 @@
+﻿rotation.obj : error LNK2019: clGetPlatformIDsrotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clGetDeviceIDsrotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clCreateContextrotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clReleaseContextrotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clCreateCommandQueueWithPropertiesrotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clReleaseCommandQueuerotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clCreateBufferrotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clReleaseMemObjectrotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clCreateProgramWithSourcerotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clReleaseProgramrotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clBuildProgramrotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clGetProgramBuildInfobuild_error 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clCreateKernelrotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clReleaseKernelrotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clSetKernelArgrotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clFinishrotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clEnqueueReadBufferrotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clEnqueueWriteBufferrotate 함수에서 참조되는 확인할 수 없는 외부 기호
+rotation.obj : error LNK2019: clEnqueueNDRangeKernelrotate 함수에서 참조되는 확인할 수 없는 외부 기호
+C:\Program Files (x86)\AMD APP SDK\3.0\lib\x86\OpenCL.lib : warning LNK4272: 'x86' 라이브러리 컴퓨터 종류가 'x64' 대상 컴퓨터 종류와 충돌합니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\imagerotation\x64\Debug\imagerotation.exe : fatal error LNK1120: 19개의 확인할 수 없는 외부 참조입니다.
