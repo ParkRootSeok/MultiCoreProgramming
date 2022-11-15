@@ -1,5 +1,4 @@
-__kernel void mat_mul_seq (__global int **A, __global int **B, __global int **C,
-							__global int row_a, __global int col_a, __global int col_b) {
+__kernel void mat_mul(__global int *A, __global int *B, __global int *C, int row_a, int col_a, int col_b) {
 	
 	int i = get_global_id(0);	// row index
 	int j = get_global_id(1);	// col index

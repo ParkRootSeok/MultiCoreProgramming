@@ -1,0 +1,5 @@
+﻿  VecAdd.c
+D:\Geun\코딩\git\MultiCoreProgramming\vectoradd\VecAdd.c(106,16): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Geun\코딩\git\MultiCoreProgramming\vectoradd\VecAdd.c(128,16): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Geun\코딩\git\MultiCoreProgramming\vectoradd\VecAdd.c(156,16): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  vectoradd.vcxproj -> D:\Geun\코딩\git\MultiCoreProgramming\vectoradd\x64\Debug\vectoradd.exe

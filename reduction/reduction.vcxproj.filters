@@ -18,8 +18,10 @@
     <ClCompile Include="calculateAverage.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="kernel.cl">
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="kernel.cl">
       <Filter>소스 파일</Filter>
-    </ClCompile>
+    </None>
   </ItemGroup>
 </Project>

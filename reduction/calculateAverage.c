@@ -45,122 +45,30 @@ char* get_source_code(const char* file_name, size_t* len) {
 
 int main() {
 
-	cl_program program;	// program
-	cl_kernel kernel;	// kernel
 	cl_int err;
 
-	/* 1. read device */
-	cl_uint num_platforms;
-	cl_platform_id* platforms;
-	cl_uint num_devices;
-	cl_device_id* device;
-	char str[1024];
-	cl_device_type device_type;
-	size_t max_work_group_size;
-	cl_uint max_clock_frequency;
-	cl_ulong global_mem_size;
-	cl_ulong local_mem_size;
-	cl_ulong max_mem_alloc_size;
-	cl_ulong max_compute_units;
-	cl_command_queue_properties queue_properties;
-	cl_uint p, d;
-
-	err = clGetPlatformIDs(0, NULL, &num_platforms);   // Bind to platform
-	CHECK_ERROR(err);
-	platforms = (cl_platform_id*)malloc(sizeof(cl_platform_id) * num_platforms);
-
-	err = clGetPlatformIDs(num_platforms, platforms, NULL); // Get ID for the device
+	// Platform ID
+	cl_platform_id platform;
+	err = clGetPlatformIDs(1, &platform, NULL);
 	CHECK_ERROR(err);
 
-	printf("Number of platforms: %u\n\n", num_platforms);
-	for (p = 0; p < num_platforms; p++)
-	{
-		printf("platform: %u\n", p);
-
-		err = clGetPlatformInfo(platforms[p], CL_PLATFORM_NAME, 1024, str, NULL);
-		CHECK_ERROR(err);
-		printf("- CL_PLATFORM_NAME\t:%s\n", str);
-
-		err = clGetPlatformInfo(platforms[p], CL_PLATFORM_VENDOR, 1024, str, NULL);
-		CHECK_ERROR(err);
-		printf("- CL_PLATFORM_VENDOR\t:%s\n\n", str);
-
-
-		err = clGetDeviceIDs(platforms[p], CL_DEVICE_TYPE_ALL, 0, NULL, &num_devices);
-		CHECK_ERROR(err);
-		printf("Number of devices:\t%u\n\n", num_devices);
-
-		device = (cl_device_id*)malloc(sizeof(cl_device_id) * num_devices);
-		err = clGetDeviceIDs(platforms[p], CL_DEVICE_TYPE_ALL, num_devices, device, NULL);
-		CHECK_ERROR(err);
-
-		for (d = 0; d < num_devices; d++)
-		{
-			printf("device: %u\n", d);
-
-			err = clGetDeviceInfo(device[d], CL_DEVICE_TYPE, sizeof(cl_device_type), &device_type, NULL);
-			CHECK_ERROR(err);
-			printf("- CL_DEVICE_TYPE\t:");
-			if (device_type & CL_DEVICE_TYPE_CPU) printf(" CL_DEVICE_TYPE_CPU");
-			if (device_type & CL_DEVICE_TYPE_GPU) printf(" CL_DEVICE_TYPE_GPU");
-			if (device_type & CL_DEVICE_TYPE_ACCELERATOR) printf(" CL_DEVICE_TYPE_ACCELERATOR");
-			if (device_type & CL_DEVICE_TYPE_DEFAULT) printf(" CL_DEVICE_TYPE_DEFAULT");
-			if (device_type & CL_DEVICE_TYPE_CUSTOM) printf(" CL_DEVICE_TYPE_CUSTOM");
-			printf("\n");
-
-			err = clGetDeviceInfo(device[d], CL_DEVICE_NAME, 1024, str, NULL);
-			CHECK_ERROR(err);
-			printf("- CL_DEVICE_NAME\t: %s\n", str);
-
-			err = clGetDeviceInfo(device[d], CL_DEVICE_VENDOR, 1024, str, NULL);
-			CHECK_ERROR(err);
-			printf("- CL_DEVICE_VENDOR\t: %s\n", str);
-
-			err = clGetDeviceInfo(device[d], CL_DEVICE_VERSION, 1024, str, NULL);
-			CHECK_ERROR(err);
-			printf("- CL_DEVICE_VERSION\t: %s\n", str);
-
-			err = clGetDeviceInfo(device[d], CL_DEVICE_MAX_CLOCK_FREQUENCY, sizeof(cl_ulong), &max_clock_frequency, NULL);
-			CHECK_ERROR(err);
-			printf("- CL_DEVICE_MAX_CLOCK_FREQUENCY : %luMHz\n", max_clock_frequency);
-
-			err = clGetDeviceInfo(device[d], CL_DEVICE_MAX_COMPUTE_UNITS, sizeof(cl_ulong), &max_compute_units, NULL);
-			CHECK_ERROR(err);
-			printf("- CL_DEVICE_MAX_COMPUTE_UNITS : %lu\n", max_compute_units);
-
-			err = clGetDeviceInfo(device[d], CL_DEVICE_MAX_WORK_GROUP_SIZE, sizeof(size_t), &max_work_group_size, NULL);
-			CHECK_ERROR(err);
-			printf("- CL_DEVICE_MAX_WORK_GROUP_SIZE : %lu\n", max_work_group_size);
-
-			err = clGetDeviceInfo(device[d], CL_DEVICE_GLOBAL_MEM_SIZE, sizeof(cl_ulong), &global_mem_size, NULL);
-			CHECK_ERROR(err);
-			printf("- CL_DEVICE_GLOBAL_MEM_SIZE : %lu\n", global_mem_size);
-
-			err = clGetDeviceInfo(device[d], CL_DEVICE_LOCAL_MEM_SIZE, sizeof(cl_ulong), &local_mem_size, NULL);
-			CHECK_ERROR(err);
-			printf("- CL_DEVICE_LOCAL_MEM_SIZE : %lu\n", local_mem_size);
-
-			err = clGetDeviceInfo(device[d], CL_DEVICE_QUEUE_PROPERTIES, sizeof(cl_ulong), &queue_properties, NULL);
-			CHECK_ERROR(err);
-			printf("- CL_DEVICE_QUEUE_PROPERTIES :");
-			if (queue_properties & CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE) printf(" CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE");
-			if (queue_properties & CL_QUEUE_PROFILING_ENABLE) printf(" CL_QUEUE_PROFILING_ENABLE");
-			printf("\n");
-		}
-
-	}
+	// Device ID
+	cl_device_id device;
+	err = clGetDeviceIDs(platform, CL_DEVICE_TYPE_GPU, 1, &device, NULL);
+	CHECK_ERROR(err);
 
 	/* 2. Create a context */
 	cl_context context;
-	context = clCreateContext(NULL, 1, device, NULL, NULL, &err);
+	context = clCreateContext(NULL, 1, &device, NULL, NULL, &err);
 	CHECK_ERROR(err);
 
 	/* 3. Create a command queue */
 	cl_command_queue queue;
-	queue = clCreateCommandQueueWithProperties(context, device[0], 0, &err);
+	queue = clCreateCommandQueueWithProperties(context, device, 0, &err);
 	CHECK_ERROR(err);
 
 	/* 4. Create the compute program from the source buffer */
+	cl_program program;
 	size_t kernel_source_size;
 
 	const char* kernel_source_code = get_source_code("kernel.cl", &kernel_source_size);
@@ -168,10 +76,11 @@ int main() {
 	CHECK_ERROR(err);
 
 	/* 5. Build the program executable */
-	clBuildProgram(program, 1, device, "", NULL, NULL);
+	clBuildProgram(program, 1, &device, "", NULL, NULL);
 	CHECK_ERROR(err);
 
 	/* 6. Create the compute kernel */
+	cl_kernel kernel;
 	kernel = clCreateKernel(program, "reduction", &err);
 	CHECK_ERROR(err);
 
@@ -179,11 +88,11 @@ int main() {
 
 	cl_mem numbersBuffer, sumBuffer;
 
-	int capacity = 1024;
+	int capacity = 512;
 	int* numbers, * sum;
 
 	size_t numbersSize = capacity * sizeof(int);
-	size_t sumSize = sizeof(int);
+	size_t sumSize = capacity * sizeof(int);
 
 	// Allocate memory for each Matrix on host
 	numbers = (int*)malloc(sizeof(int) * capacity);
@@ -220,9 +129,10 @@ int main() {
 	CHECK_ERROR(err);
 	err = clSetKernelArg(kernel, 1, sizeof(cl_mem), &sumBuffer);
 	CHECK_ERROR(err);
-	err = clSetKernelArg(kernel, 2, sizeof(cl_int), &capacity);
+	err = clSetKernelArg(kernel, 2, sizeof(int), &capacity);
 	CHECK_ERROR(err);
-
+	err = clSetKernelArg(kernel, 3, sizeof(int), NULL);
+	CHECK_ERROR(err);
 
 	/* 9. Execute the kernel over the entire range of the data set */
 
@@ -236,7 +146,7 @@ int main() {
 	err = clEnqueueReadBuffer(queue, sumBuffer, CL_TRUE, 0, sumSize, sum, 0, NULL, NULL);
 	CHECK_ERROR(err);
 	
-	printf("Result by parallel : %d\n", sum);
+	//printf("Result by parallel : %d\n", sum);
 
 
 	// Wait for the command queue to get serviced before reading back results
