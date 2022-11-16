@@ -1,3 +1,3 @@
 ﻿  calculateAverage.c
-D:\Geun\코딩\git\MultiCoreProgramming\reduction\calculateAverage.c(139,9): warning C4101: 'local_size' :참조되지 않은 지역 변수입니다.
+D:\Geun\코딩\git\MultiCoreProgramming\reduction\calculateAverage.c(139,9): warning C4047: '초기화 중': 'size_t'의 간접 참조 수준이 'void *'과(와) 다릅니다.
   reduction.vcxproj -> D:\Geun\코딩\git\MultiCoreProgramming\reduction\x64\Debug\reduction.exe

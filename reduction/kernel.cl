@@ -1,20 +1,20 @@
 __kernel void reduction (__global int * numbers, __global int * sum, int capacity, __local int * local_sum) {
 
 	int i = get_global_id(0);
-	int local_Id = get_global_id(0);
-	int group_size = get_local_size(0);
+	int local_Id = get_local_id(0);
+	int group_size = 256;
 	
-	// Initial Array Temp
-	// 유효한 인덱스만 초기화
+	// Initial Array Temp (유효한 인덱스만 초기화)
 	local_sum[local_Id] = (i < capacity) ? numbers[i] : 0;
 	barrier(CLK_LOCAL_MEM_FENCE);
 
-	for (int offset = group_size/2 ; offset > 0 ; offset >>= 1) {
+	for (int offset = group_size / 2 ; offset > 0 ; offset >>= 1) {
 
-		if (offset > local_Id) {
+
+		if (local_Id < offset) {
 			local_sum[local_Id] += numbers[local_Id + offset];
 		}
-	
+		
 		barrier(CLK_LOCAL_MEM_FENCE);
 
 	}

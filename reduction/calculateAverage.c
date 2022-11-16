@@ -88,11 +88,11 @@ int main() {
 
 	cl_mem numbersBuffer, sumBuffer;
 
-	int capacity = 512;
+	cl_int capacity = 512;
 	int* numbers, * sum;
 
 	size_t numbersSize = capacity * sizeof(int);
-	size_t sumSize = capacity * sizeof(int);
+	size_t sumSize = sizeof(int);
 
 	// Allocate memory for each Matrix on host
 	numbers = (int*)malloc(sizeof(int) * capacity);
@@ -129,17 +129,17 @@ int main() {
 	CHECK_ERROR(err);
 	err = clSetKernelArg(kernel, 1, sizeof(cl_mem), &sumBuffer);
 	CHECK_ERROR(err);
-	err = clSetKernelArg(kernel, 2, sizeof(int), &capacity);
+	err = clSetKernelArg(kernel, 2, sizeof(cl_int), &capacity);
 	CHECK_ERROR(err);
-	err = clSetKernelArg(kernel, 3, sizeof(int), NULL);
+	err = clSetKernelArg(kernel, 3, sizeof(int) * 256, NULL);
 	CHECK_ERROR(err);
 
 	/* 9. Execute the kernel over the entire range of the data set */
 
-	size_t local_size;  // Number of work items in each local work group
+	size_t local_size = NULL;  // Number of work items in each local work group
 	size_t global_size = capacity; // Number of total work items
 
-	err = clEnqueueNDRangeKernel(queue, kernel, 1, NULL, &global_size, NULL, 0, NULL, NULL);
+	err = clEnqueueNDRangeKernel(queue, kernel, 1, &local_size, &global_size, NULL, 0, NULL, NULL);
 	CHECK_ERROR(err);
 
 	/* 10. Read the results from the device */
