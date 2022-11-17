@@ -1,3 +1,5 @@
 ﻿  calculateAverage.c
-D:\Geun\코딩\git\MultiCoreProgramming\reduction\calculateAverage.c(139,9): warning C4047: '초기화 중': 'size_t'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-  reduction.vcxproj -> D:\Geun\코딩\git\MultiCoreProgramming\reduction\x64\Debug\reduction.exe
+c:\users\cedpt\documents\multicoreprogramming\reduction\calculateaverage.c(140): warning C4047: '함수': 'cl_uint'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+c:\users\cedpt\documents\multicoreprogramming\reduction\calculateaverage.c(140): warning C4024: 'clEnqueueNDRangeKernel': 형식 및 실제 매개 변수 7의 형식이 서로 다릅니다.
+c:\users\cedpt\documents\multicoreprogramming\reduction\calculateaverage.c(140): warning C4020: 'clEnqueueNDRangeKernel': 실제 매개 변수가 너무 많습니다.
+  reduction.vcxproj -> C:\Users\cedpt\Documents\MultiCoreProgramming\reduction\x64\Debug\reduction.exe

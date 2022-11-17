@@ -142,7 +142,7 @@ int main() {
 	size_t local_size;  // Number of work items in each local work group
 	size_t global_size[2] = {rowA, colA}; // Number of total work items
 
-	err = clEnqueueNDRangeKernel(queue, kernel, 2, NULL, &global_size, NULL, 0, NULL, NULL);
+	err = clEnqueueNDRangeKernel(queue, kernel, 2, NULL, global_size, NULL, 0, NULL, NULL);
 	CHECK_ERROR(err);
 
 	/* 10. Read the results from the device */

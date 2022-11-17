@@ -88,32 +88,30 @@ int main() {
 
 	cl_mem numbersBuffer, sumBuffer;
 
-	cl_int capacity = 512;
+	int capacity = 1024;
 	int* numbers, * sum;
 
 	size_t numbersSize = capacity * sizeof(int);
-	size_t sumSize = sizeof(int);
 
 	// Allocate memory for each Matrix on host
-	numbers = (int*)malloc(sizeof(int) * capacity);
-	sum = (int*)malloc(sizeof(int));
+	numbers = (int*)malloc(numbersSize);
+	sum = (int*)malloc(numbersSize);
 
 	// Initialize Matrix
 	for (int i = 0; i < capacity; i++) {
+		sum[i] = 0;
 		numbers[i] = 1;
 	}
 
 	numbersBuffer = clCreateBuffer(context, CL_MEM_READ_WRITE, numbersSize, NULL, NULL);
 	CHECK_ERROR(err);
-
-	sumBuffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sumSize, NULL, NULL);
+	sumBuffer = clCreateBuffer(context, CL_MEM_READ_WRITE, numbersSize, NULL, NULL);
 	CHECK_ERROR(err);
-
 
 	// Write our data set into the input array in device memory
-	err = clEnqueueWriteBuffer(queue, numbersBuffer, CL_TRUE, 0, numbersSize, numbersBuffer, 0, NULL, NULL);
+	err = clEnqueueWriteBuffer(queue, numbersBuffer, CL_TRUE, 0, numbersSize, numbers, 0, NULL, NULL);
 	CHECK_ERROR(err);
-	err = clEnqueueWriteBuffer(queue, sumBuffer, CL_TRUE, 0, sumSize, sumBuffer, 0, NULL, NULL);
+	err = clEnqueueWriteBuffer(queue, sumBuffer, CL_TRUE, 0, numbersSize, sum, 0, NULL, NULL);
 	CHECK_ERROR(err);
 
 
@@ -129,9 +127,9 @@ int main() {
 	CHECK_ERROR(err);
 	err = clSetKernelArg(kernel, 1, sizeof(cl_mem), &sumBuffer);
 	CHECK_ERROR(err);
-	err = clSetKernelArg(kernel, 2, sizeof(cl_int), &capacity);
+	err = clSetKernelArg(kernel, 2, sizeof(int), &capacity);
 	CHECK_ERROR(err);
-	err = clSetKernelArg(kernel, 3, sizeof(int) * 256, NULL);
+	err = clSetKernelArg(kernel, 3, sizeof(int) * capacity, NULL);
 	CHECK_ERROR(err);
 
 	/* 9. Execute the kernel over the entire range of the data set */
@@ -139,15 +137,17 @@ int main() {
 	size_t local_size = 256;  // Number of work items in each local work group
 	size_t global_size = capacity; // Number of total work items
 
-	err = clEnqueueNDRangeKernel(queue, kernel, 1, &local_size, &global_size, NULL, 0, NULL, NULL);
+	err = clEnqueueNDRangeKernel(queue, kernel, 1, NULL, &global_size, &local_size, NULL, 0, NULL, NULL);
 	CHECK_ERROR(err);
 
 	/* 10. Read the results from the device */
-	err = clEnqueueReadBuffer(queue, sumBuffer, CL_TRUE, 0, sumSize, sum, 0, NULL, NULL);
+	err = clEnqueueReadBuffer(queue, sumBuffer, CL_TRUE, 0, numbersSize, sum, 0, NULL, NULL);
 	CHECK_ERROR(err);
 	
-	//printf("Result by parallel : %d\n", sum);
-
+	for (int i = 0; i < (capacity / 256); i++) {
+		printf("%d\n", sum[i]);
+		result += sum[i];
+	} printf("Result by parallel : %d\n", result / capacity);
 
 	// Wait for the command queue to get serviced before reading back results
 	clFinish(queue);
