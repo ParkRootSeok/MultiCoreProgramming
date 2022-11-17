@@ -136,7 +136,7 @@ int main() {
 
 	/* 9. Execute the kernel over the entire range of the data set */
 
-	size_t local_size = NULL;  // Number of work items in each local work group
+	size_t local_size = 256;  // Number of work items in each local work group
 	size_t global_size = capacity; // Number of total work items
 
 	err = clEnqueueNDRangeKernel(queue, kernel, 1, &local_size, &global_size, NULL, 0, NULL, NULL);

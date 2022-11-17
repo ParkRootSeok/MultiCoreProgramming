@@ -10,13 +10,10 @@ __kernel void reduction (__global int * numbers, __global int * sum, int capacit
 
 	for (int offset = group_size / 2 ; offset > 0 ; offset >>= 1) {
 
-
 		if (local_Id < offset) {
 			local_sum[local_Id] += numbers[local_Id + offset];
 		}
-		
 		barrier(CLK_LOCAL_MEM_FENCE);
-
 	}
 
 	if (local_Id == 0) {
