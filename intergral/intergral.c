@@ -62,9 +62,6 @@ double integral(int N) {
 
 }
 
-
-
-
 int main() {
 
 	clock_t start, end;
@@ -95,8 +92,8 @@ int main() {
 	cl_program program;
 	size_t kernel_source_size;
 
-	const char* kernel_source_code = get_source_code("kernel.cl", &kernel_source_size);
-	printf("%s", kernel_source_code);
+	const char* kernel_source_code = get_source_code("int_kernel.cl", &kernel_source_size);
+	// printf("%s", kernel_source_code);
 	program = clCreateProgramWithSource(context, 1, (const char**)&kernel_source_code, &kernel_source_size, &err);
 	CHECK_ERROR(err);
 
@@ -114,17 +111,13 @@ int main() {
 	int N = 1000;
 	float sum = 0;
 
-	// Allocate memory for each Matrix on host
-
-
-	// Write our data set into the input array in device memory
-
-
 	// Calculate Average
 	start = clock();
 	sum = integral(N);
 	end = clock();
 	printf("Not parallel running time : %.f sec \n", (double)(end - start) / CLK_TCK);
+	printf("Not parallel Result : %.4f\n\n", sum);
+	
 
 	/* 8. Set the arguments to our compute kernel */
 	err = clSetKernelArg(kernel, 0, sizeof(cl_float), &sum);
@@ -140,11 +133,12 @@ int main() {
 	start = clock();
 	err = clEnqueueNDRangeKernel(queue, kernel, 1, NULL, &global_size, &local_size, NULL, 0, NULL, NULL);
 	CHECK_ERROR(err);
+	clFinish(queue);
 	end = clock();
-	printf("parallel running time : %.f sec \n", (double)(end - start) / CLK_TCK);
+	printf("Parallel running time : %.f sec \n", (double)(end - start) / CLK_TCK);
 
 	/* 10. Read the results from the device */
-	printf("Result : %f", sum);
+	printf("Parallel Result : %.4f\n\n", sum);
 
 	// Wait for the command queue to get serviced before reading back results
 	clFinish(queue);
