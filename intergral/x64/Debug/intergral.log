@@ -1,6 +1,6 @@
 ﻿  intergral.c
-D:\Geun\코딩\git\MultiCoreProgramming\intergral\intergral.c(116,8): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Geun\코딩\git\MultiCoreProgramming\intergral\intergral.c(134,86): warning C4047: '함수': 'cl_uint'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-D:\Geun\코딩\git\MultiCoreProgramming\intergral\intergral.c(134,82): warning C4024: 'clEnqueueNDRangeKernel': 형식 및 실제 매개 변수 7의 형식이 서로 다릅니다.
-D:\Geun\코딩\git\MultiCoreProgramming\intergral\intergral.c(134,97): warning C4020: 'clEnqueueNDRangeKernel': 실제 매개 변수가 너무 많습니다.
-  intergral.vcxproj -> D:\Geun\코딩\git\MultiCoreProgramming\intergral\x64\Debug\intergral.exe
+C:\Users\g_e_u\git\MultiCoreProgramming\intergral\intergral.c(114,11): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\intergral\intergral.c(145,86): warning C4047: '함수': 'cl_uint'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\intergral\intergral.c(145,82): warning C4024: 'clEnqueueNDRangeKernel': 형식 및 실제 매개 변수 7의 형식이 서로 다릅니다.
+C:\Users\g_e_u\git\MultiCoreProgramming\intergral\intergral.c(145,97): warning C4020: 'clEnqueueNDRangeKernel': 실제 매개 변수가 너무 많습니다.
+  intergral.vcxproj -> C:\Users\g_e_u\git\MultiCoreProgramming\intergral\x64\Debug\intergral.exe

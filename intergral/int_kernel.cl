@@ -1,9 +1,9 @@
-__kernel void integral (float sum, int N) {
+__kernel void integral (__global float * sum, int N) {
 	
 	int i = get_global_id(0);
-	float dx = (1.0 / (double)N);
-	float x = ((double)i * dx);
+	float dx = (1.0 / (float)N);
+	float x = ((float)i * dx);
 
-	sum += ((3 * x * x) + (2 * x) + 1) * dx;
+	sum[i] = ((3 * x * x) + (2 * x) + 1) * dx;
 
 }

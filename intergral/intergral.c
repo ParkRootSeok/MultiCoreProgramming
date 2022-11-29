@@ -55,9 +55,9 @@ double integral(int N) {
 	double sum = 0;
 
 	for (int i = 0; i < N; i++) {
-		sum += f(i * dx) * dx;
+		sum += f((double)(i)*dx) * dx;
 	}
-	
+
 	return sum;
 
 }
@@ -106,28 +106,39 @@ int main() {
 	kernel = clCreateKernel(program, "integral", &err);
 	CHECK_ERROR(err);
 
-	/* 7. Create the input and output arrays in device memory for our calculation */
-
 	int N = 1000;
-	float sum = 0;
+	float result;
 
-	// Calculate Average
+	/* host Calculate Average */
 	start = clock();
-	sum = integral(N);
+	result = integral(N);
 	end = clock();
 	printf("Not parallel running time : %.f sec \n", (double)(end - start) / CLK_TCK);
-	printf("Not parallel Result : %.4f\n\n", sum);
-	
+	printf("Not parallel Result : %.4f\n\n", result);
+
+	/* 7. Create the input and output arrays in device memory for our calculation */
+
+	float* sum = (float*)malloc(N * sizeof(float));
+
+	for (int i = 0; i < N; i++) {
+		sum[i] = 0;
+	}
+
+
+	cl_mem sumBuffer;
+	size_t sumSize = N * sizeof(float);
+
+	sumBuffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sumSize, NULL, NULL);
+	CHECK_ERROR(err);
 
 	/* 8. Set the arguments to our compute kernel */
-	err = clSetKernelArg(kernel, 0, sizeof(cl_float), &sum);
+	err = clSetKernelArg(kernel, 0, sizeof(cl_mem), &sumBuffer);
 	CHECK_ERROR(err);
 	err = clSetKernelArg(kernel, 1, sizeof(cl_int), &N);
 	CHECK_ERROR(err);
 
-
 	/* 9. Execute the kernel over the entire range of the data set */
-	size_t local_size = N;  // Number of work items in each local work group
+	size_t local_size = 1;  // Number of work items in each local work group
 	size_t global_size = N; // Number of total work items
 
 	start = clock();
@@ -135,10 +146,17 @@ int main() {
 	CHECK_ERROR(err);
 	clFinish(queue);
 	end = clock();
-	printf("Parallel running time : %.f sec \n", (double)(end - start) / CLK_TCK);
+	printf("parallel running time : %.f sec \n", (double)(end - start) / CLK_TCK);
 
 	/* 10. Read the results from the device */
-	printf("Parallel Result : %.4f\n\n", sum);
+	err = clEnqueueReadBuffer(queue, sumBuffer, CL_TRUE, 0, sumSize, sum, 0, NULL, NULL);
+	CHECK_ERROR(err);
+	
+	result = 0;
+	for (int i = 0; i < N; i++) {
+		result += sum[i];
+	} printf("Parallel Result : %.4f \n", result);
+	
 
 	// Wait for the command queue to get serviced before reading back results
 	clFinish(queue);

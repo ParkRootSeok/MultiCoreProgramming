@@ -1,1 +1,2 @@
 D:\Geun\코딩\git\MultiCoreProgramming\reduction\x64\Debug\reduction.exe
+C:\Users\g_e_u\git\MultiCoreProgramming\reduction\x64\Debug\reduction.exe

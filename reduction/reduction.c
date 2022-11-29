@@ -145,14 +145,14 @@ int main() {
 	size_t local_size = 256;  // Number of work items in each local work group
 	size_t global_size = capacity; // Number of total work items
 
+	start = clock();
 	err = clEnqueueNDRangeKernel(queue, kernel, 1, NULL, &global_size, &local_size, NULL, 0, NULL, NULL);
 	CHECK_ERROR(err);
+	end = clock();
 
 	/* 10. Read the results from the device */
-	start = clock();
 	err = clEnqueueReadBuffer(queue, sumBuffer, CL_TRUE, 0, sumSize, sum, 0, NULL, NULL);
 	CHECK_ERROR(err);
-	end = clock();
 
 	result = 0;
 	for (int i = 0; i < (capacity / 256); i++) {
